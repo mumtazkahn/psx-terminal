@@ -178,18 +178,35 @@ curl "https://psxterminal.com/api/symbols"
 
 ### WebSocket
 ```javascript
+import WebSocket from 'ws';
+
 // Connect and subscribe
 const ws = new WebSocket('wss://psxterminal.com/');
-ws.send(JSON.stringify({
-  type: 'subscribe',
-  subscriptionType: 'marketData',
-  params: { marketType: 'REG' }
-}));
+
+// Wait for connection to open
+ws.onopen = () => {
+  console.log('Connected!');
+  ws.send(JSON.stringify({
+    type: 'subscribe',
+    subscriptionType: 'marketData',
+    params: { marketType: 'REG' }
+  }));
+};
 
 // Handle updates
 ws.onmessage = (event) => {
   const data = JSON.parse(event.data);
   console.log('Market update:', data);
+};
+
+// Handle errors
+ws.onerror = (error) => {
+  console.error('WebSocket error:', error);
+};
+
+// Handle close
+ws.onclose = () => {
+  console.log('Connection closed');
 };
 ```
 
