@@ -173,6 +173,99 @@ Get all available trading symbols.
 }
 ```
 
+#### Symbol Yields
+```
+GET /api/yields/{symbol}
+```
+Get yield metrics and financial ratios for a specific symbol.
+
+**Parameters:**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| symbol | STRING | YES | Symbol name (e.g., SSGC) |
+
+**Response:**
+```json
+{
+  "success": true,
+  "data": {
+    "symbol": "SSGC",
+    "sector": "0821",
+    "listedIn": "ALLSHR,JSMFI,KMIALLSHR",
+    "marketCap": "41.0B",
+    "price": 46.53,
+    "changePercent": 1.262,
+    "yearChange": 374.795918367347,
+    "peRatio": 5.4294049008168,
+    "dividendYield": 0,
+    "freeFloat": "308.3M",
+    "volume30Avg": 26831414.5,
+    "isNonCompliant": false,
+    "timestamp": "2025-07-08T14:35:52.887Z"
+  },
+  "timestamp": 1751988094625
+}
+```
+
+#### Company Information
+```
+GET /api/company/{symbol}
+```
+Get detailed company information including financial stats and business description.
+
+**Parameters:**
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| symbol | STRING | YES | Symbol name (e.g., SSGC) |
+
+**Response:**
+```json
+{
+  "success": true,
+  "data": {
+    "symbol": "SSGC",
+    "scrapedAt": "2025-06-26T19:06:00.398Z",
+    "financialStats": {
+      "marketCap": {
+        "raw": "37,412,515.64",
+        "numeric": 37412515.64
+      },
+      "shares": {
+        "raw": "880,916,309",
+        "numeric": 880916309
+      },
+      "freeFloat": {
+        "raw": "308,320,708",
+        "numeric": 308320708
+      },
+      "freeFloatPercent": {
+        "raw": "35.00%",
+        "numeric": 35
+      }
+    },
+    "businessDescription": "Sui Southern Gas Company Limited's main activity is transmission and distribution of natural gas in Sindh and Baluchistan. The Company is also engaged in certain activities related to the gas business including the manufacturing and sale of gas meters and construction contracts for laying of pipelines.",
+    "keyPeople": [
+      {
+        "name": "Muhammad Amin Rajput (Acting)",
+        "position": "CEO"
+      },
+      {
+        "name": "Dr. Shamshad Akhtar",
+        "position": "Chairperson"
+      },
+      {
+        "name": "Fawad Ahmed Khan",
+        "position": "Company Secretary"
+      }
+    ],
+    "error": null
+  },
+  "timestamp": 1751988182467
+}
+```
+
 ## WebSocket API
 
 ### General Information
