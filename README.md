@@ -99,25 +99,25 @@ curl "https://psxterminal.com/api/dividends/MARI"
 <div align="center">
 
 ### Desktop Dashboard
-![Home Dashboard](screenshots/home.jpg)
+<img src="screenshots/home.jpg" width="300" alt="Home Dashboard">
 
 ### Market Overview
-![Market Data](screenshots/market.jpg)
+<img src="screenshots/market.jpg" width="300" alt="Market Data">
 
 ### Trading Charts
-![Interactive Charts](screenshots/charts.jpg)
+<img src="screenshots/charts.jpg" width="300" alt="Interactive Charts">
 
 ### Fundamentals Analysis
-![Financial Analysis](screenshots/fundamentals.jpg)
+<img src="screenshots/fundamentals.jpg" width="300" alt="Financial Analysis">
 
 ### PE Ratios & Yields
-![PE and Yields](screenshots/PE-Yields.jpg)
+<img src="screenshots/PE-Yields.jpg" width="300" alt="PE and Yields">
 
 ### Dividend History
-![Dividend Tracking](screenshots/dividends_history.jpg)
+<img src="screenshots/dividends_history.jpg" width="300" alt="Dividend Tracking">
 
 ### Mobile App
-![Mobile Application](screenshots/App.jpg)
+<img src="screenshots/App.jpg" width="300" alt="Mobile Application">
 
 *[View all screenshots →](screenshots/)*
 
