@@ -4,7 +4,7 @@
 
 ![PSX Terminal](https://img.shields.io/badge/PSX-Terminal-yellow?style=for-the-badge)
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/mumtazkahn/psx-terminal)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue)](https://github.com/mumtazkahn/psx-terminal)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![API](https://img.shields.io/badge/API-documented-blue)](API.md)
 [![Live](https://img.shields.io/badge/live-psxterminal.com-success)](https://psxterminal.com)
@@ -44,11 +44,14 @@
 
 ### Integrate Our API
 ```bash
-# Get live market data
-curl "https://psxterminal.com/api/market-data?market=REG"
+# Get live market data for a symbol
+curl "https://psxterminal.com/api/ticks/REG/HUBC"
 
-# WebSocket streaming
-wscat -c wss://psxterminal.com/
+# Get market statistics
+curl "https://psxterminal.com/api/stats/REG"
+
+# Get dividend history
+curl "https://psxterminal.com/api/dividends/MARI"
 ```
 
 ### For Developers
@@ -80,6 +83,8 @@ wscat -c wss://psxterminal.com/
 - **Sector performance** breakdown
 - **Market statistics** and breadth indicators
 - **Symbol lookup** with detailed data
+- **Real-time news and announcements** for market insights
+- **Deep financial analysis** with comprehensive fundamentals
 
 ### 🛠️ Developer APIs
 - **RESTful APIs** for market data access
@@ -93,20 +98,26 @@ wscat -c wss://psxterminal.com/
 
 <div align="center">
 
-### Desktop Interface
-![Desktop Dashboard](screenshots/psx-desktop-dashboard.png)
-
-### Trading Charts
-![Trading Charts](screenshots/psx-trading-charts.png)
+### Desktop Dashboard
+![Home Dashboard](screenshots/home.jpg)
 
 ### Market Overview
-![Market Overview](screenshots/psx-market-overview.png)
+![Market Data](screenshots/market.jpg)
 
-### Mobile Responsive
-<img src="screenshots/psx-mobile-interface.png" width="300" alt="Mobile Interface">
+### Trading Charts
+![Interactive Charts](screenshots/charts.jpg)
 
-### PWA Mobile App
-<img src="screenshots/psx-mobile-pwa.png" width="300" alt="PWA Mobile App">
+### Fundamentals Analysis
+![Financial Analysis](screenshots/fundamentals.jpg)
+
+### PE Ratios & Yields
+![PE and Yields](screenshots/PE-Yields.jpg)
+
+### Dividend History
+![Dividend Tracking](screenshots/dividends_history.jpg)
+
+### Mobile App
+![Mobile Application](screenshots/App.jpg)
 
 *[View all screenshots →](screenshots/)*
 
@@ -139,6 +150,8 @@ Visit **[psxterminal.com](https://psxterminal.com)** for full market monitoring:
 - Interactive charts with multiple timeframes
 - Customizable watchlists and tools
 - Sector performance tracking
+- Real-time news and announcements
+- Deep financial analysis and fundamentals
 - Mobile-optimized responsive interface
 - Progressive Web App functionality
 
@@ -166,14 +179,26 @@ Integrate PSX data into your applications:
 
 ### REST API
 ```bash
-# Get market data
-curl "https://psxterminal.com/api/market-data?market=REG"
+# Get single symbol market data
+curl "https://psxterminal.com/api/ticks/REG/HUBC"
 
-# Get statistics
-curl "https://psxterminal.com/api/stats"
-
-# Get symbols
+# Get all available symbols
 curl "https://psxterminal.com/api/symbols"
+
+# Get market statistics
+curl "https://psxterminal.com/api/stats/REG"
+
+# Get company information
+curl "https://psxterminal.com/api/companies/HUBC"
+
+# Get fundamental analysis
+curl "https://psxterminal.com/api/fundamentals/HUBC"
+
+# Get dividend history
+curl "https://psxterminal.com/api/dividends/MARI"
+
+# Get historical kline data
+curl "https://psxterminal.com/api/klines/HUBC/1h?limit=50"
 ```
 
 ### WebSocket
@@ -282,6 +307,9 @@ See [Contributing Guide](CONTRIBUTING.md) for:
 - [x] Mobile-optimized design
 - [x] Dark/Light theme support
 - [x] Progressive Web App (PWA)
+- [x] Real-time news and announcements
+- [x] Deep financial analysis with fundamentals
+- [x] Historical dividend data
 
 ### Upcoming 🚧
 - [ ] **Mobile Apps** (iOS/Android)
