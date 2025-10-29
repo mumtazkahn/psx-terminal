@@ -8,6 +8,14 @@
 * WebSocket timestamps are in Unix time format (milliseconds)
 * All symbol names are case-sensitive
 
+## Rate Limits
+
+* **REST API**: 100 requests per minute per IP
+* **WebSocket**: 5 active connections per IP
+* **Subscriptions**: 20 subscriptions per WebSocket connection
+* **Security**: Repeated violations can result in IP ban for variable time
+* **Error Response**: Please investigate immediately if receiving 400, 404, 503, or 429 status codes
+
 ## REST API
 
 ### Market Data Endpoints
@@ -360,7 +368,7 @@ Get a single candlestick/kline data point for an exact timestamp.
 ```
 GET /api/dividends/{symbol}
 ```
-Get dividend history for a specific symbol (last 12 months for public access).
+Get dividend history for a specific symbol (last 12 months).
 
 **Parameters:**
 
@@ -398,13 +406,6 @@ Get dividend history for a specific symbol (last 12 months for public access).
 ```
 
 ## WebSocket API
-
-### General Information
-
-* Connection limit: 5 connections per IP
-* Subscription limit: 20 subscriptions per connection
-* All messages are JSON format
-* All timestamps are in Unix time format (milliseconds)
 
 ### Connection
 
@@ -465,39 +466,31 @@ The server sends ping frames every 30 seconds. Clients must respond with pong fr
 }
 ```
 
-#### Unsubscribe from Stream
+#### Subscription Types and Parameters
 
+##### Market Data Subscription
 **Request:**
 ```json
 {
-  "type": "unsubscribe",
-  "subscriptionKey": "marketData:REG",
-  "requestId": "req-002"
+  "type": "subscribe",
+  "subscriptionType": "marketData",
+  "params": {
+    "marketType": "REG",  // Optional: REG, FUT, IDX, ODL, BNB, all
+    "symbol": "HUBC"      // Optional: specific symbol filter
+  },
+  "requestId": "req-001"
 }
 ```
 
-#### List Active Subscriptions
-
-**Request:**
+**Subscription Response:**
 ```json
 {
-  "type": "listSubscriptions",
-  "requestId": "req-003"
+  "type": "subscribeResponse",
+  "requestId": "req-001",
+  "status": "success",
+  "subscriptionKey": "marketData:REG:HUBC"
 }
 ```
-
-### Data Streams
-
-#### Market Data Stream
-
-Subscribe to real-time market data updates.
-
-**Subscription Parameters:**
-
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| marketType | STRING | NO | Market filter (REG, FUT, IDX, ODL, BNB, all) |
-| symbol | STRING | NO | Specific symbol filter |
 
 **Stream Data (tickUpdate):**
 ```json
@@ -527,28 +520,34 @@ Subscribe to real-time market data updates.
 }
 ```
 
-#### K-Line Stream
+##### K-Line Subscription (Real-time Candlestick Updates)
 
-Subscribe to candlestick/kline data. Note: This is a two-step process - first request historical data, then subscribe for real-time updates.
+**Two-Step Process:**
+1. **Step 1**: Get historical data via REST API: `GET /api/klines/{symbol}/{timeframe}`
+2. **Step 2**: Subscribe for real-time updates via WebSocket:
 
-**Step 1: Request Historical K-Lines**
+**Request:**
 ```json
 {
-  "type": "klines",
-  "symbol": "AIRLINK",
-  "timeframe": "1m",
-  "requestId": "req-006"
+  "type": "subscribe",
+  "subscriptionType": "kline",
+  "params": {
+    "symbol": "HUBC",     // Required: symbol name
+    "timeframe": "1m"     // Required: 1m, 5m, 15m, 1h, 4h, 1d
+  },
+  "requestId": "req-002"
 }
 ```
 
-**Step 2: Subscribe for Real-time Updates**
-
-**Subscription Parameters:**
-
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| symbol | STRING | YES | Symbol name |
-| timeframe | STRING | NO | Interval (1m, 5m, 15m, 1h, 4h, 1d) |
+**Subscription Response:**
+```json
+{
+  "type": "subscribeResponse",
+  "requestId": "req-002",
+  "status": "success",
+  "subscriptionKey": "kline:HUBC:1m"
+}
+```
 
 **Stream Data:**
 ```json
@@ -575,67 +574,69 @@ Subscribe to candlestick/kline data. Note: This is a two-step process - first re
 }
 ```
 
-#### Statistics Stream
+##### Statistics Subscription
+**Request:**
+```json
+{
+  "type": "subscribe",
+  "subscriptionType": "statistics",
+  "params": {
+    "type": "REG",        // Optional: REG, IDX, BNB, ODL, FUT, breadth, sectors, all
+    "sector": "BANKING"   // Optional: sector filter (only with type=sectors)
+  },
+  "requestId": "req-003"
+}
+```
 
-Subscribe to market statistics updates.
-
-**Subscription Parameters:**
-
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| type | STRING | NO | Stats type (REG, IDX, BNB, ODL, FUT, breadth, sectors, all) |
-| sector | STRING | NO | Sector filter (only with type=sectors) |
-
-#### Symbol List Stream
-
-Subscribe to symbol list updates.
+**Subscription Response:**
+```json
+{
+  "type": "subscribeResponse",
+  "requestId": "req-003",
+  "status": "success",
+  "subscriptionKey": "statistics:REG"
+}
+```
 
 **Stream Data:**
 ```json
 {
-  "type": "symbolList",
-  "data": [
-    { "symbol": "AIRLINK", "market": "REG" },
-    { "symbol": "HUBC", "market": "REG" }
-  ],
+  "type": "statistics",
+  "data": {
+    "totalVolume": 1000000000,
+    "totalValue": 50000000000,
+    "totalTrades": 15000,
+    "symbolCount": 500,
+    "gainers": 250,
+    "losers": 200,
+    "unchanged": 50
+  },
   "timestamp": 1750762129000
 }
 ```
 
-### Data Requests
-
-#### Get Symbols
+#### Unsubscribe from Stream
 
 **Request:**
 ```json
 {
-  "type": "getSymbols",
+  "type": "unsubscribe",
+  "subscriptionKey": "marketData:REG",
   "requestId": "req-004"
 }
 ```
 
-#### Get Symbol Details
+#### List Active Subscriptions
 
 **Request:**
 ```json
 {
-  "type": "symbolDetails",
-  "symbol": "AIRLINK",
+  "type": "listSubscriptions",
   "requestId": "req-005"
 }
 ```
 
-#### Get K-Lines
 
-**Request:**
-```json
-{
-  "type": "klines",
-  "symbol": "AIRLINK",
-  "timeframe": "1m",
-  "requestId": "req-006"
-}
-```
 
 ## Error Codes
 
@@ -646,6 +647,7 @@ Subscribe to symbol list updates.
 | 200 | OK |
 | 400 | Bad Request |
 | 404 | Not Found |
+| 429 | Too Many Requests |
 | 500 | Internal Server Error |
 | 503 | Service Unavailable |
 
@@ -655,17 +657,10 @@ Subscribe to symbol list updates.
 {
   "type": "error",
   "message": "Subscription limit exceeded",
-  "requestId": "req-007",
+  "requestId": "req-009",
   "timestamp": 1750762129000
 }
 ```
-
-## Rate Limits
-
-* WebSocket connections: 5 per IP address
-* Subscriptions: 20 per WebSocket connection
-* K-line data: Maximum 100 records per request
-* Message rate: No specific limit enforced
 
 ## Data Types
 
