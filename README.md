@@ -9,9 +9,9 @@
 [![API](https://img.shields.io/badge/API-documented-blue)](API.md)
 [![Live](https://img.shields.io/badge/live-psxterminal.com-success)](https://psxterminal.com)
 
-**Professional Real-time Market Data Platform for Pakistan Stock Exchange**
+**Professional Real-time Market Data Platform with Market Intelligence and Advanced Portfolio Tracking for Pakistan Stock Exchange**
 
-*Modern web-based terminal for live market monitoring, data visualization, and comprehensive market analysis*
+*Modern web-based terminal for live market monitoring, data visualization, comprehensive market analysis, and intelligent portfolio management*
 
 [🌐 Live Platform](https://psxterminal.com) • [📚 API Docs](API.md) • [🏗️ Architecture](ARCHITECTURE.md) • [💻 Examples](examples/) • [📸 Screenshots](screenshots/)
 
@@ -28,7 +28,8 @@
 | **Latency** | Real-time | Live data delivery |
 | **Uptime** | High | Production reliability |
 | **Symbols** | Comprehensive | Market coverage |
-| **Updates/sec** | 100/sec | Real-time throughput |
+| **Updates/sec** | 1,000/sec | Real-time throughput |
+| **Portfolio Data** | 5 Years | State-of-the-art tracking |
 
 </div>
 
@@ -69,22 +70,50 @@ curl "https://psxterminal.com/api/dividends/MARI"
 - **Market breadth indicators** showing advances vs declines
 - **Instant tick-by-tick** price streaming
 
+### 💼 Advanced Portfolio Tracking
+- **5 years of historical data** with state-of-the-art portfolio analytics
+- **Deep insights and performance** tracking across extended periods
+- **Comprehensive transaction support** including splits, bonus, rights, and CGTs that nobody else provides
+- **Professional portfolio management** tools with detailed analytics
+
+### 🔍 Market Intelligence & Analysis Tools
+- **ToWatch Opportunity Scanner** algorithmically spots live market opportunities across multiple categories
+- **Top gainers and losers** monitoring with intelligent screening
+- **Volume and value** analysis with advanced metrics
+- **Sector performance** breakdown with deep insights
+- **Market statistics** and breadth indicators
+- **Symbol lookup** with detailed comprehensive data
+
+### 📅 Dividend & Calendar Intelligence
+- **Complete dividend calendar** for informed investment decisions
+- **Upcoming dividend announcements** with timeline tracking
+- **Historical dividend analysis** with performance metrics
+
+### 🏦 Comprehensive Mutual Funds Coverage
+- **Complete mutual funds database** with sectors and professional ratings
+- **All-time historical data** of every fund with detailed performance tracking
+- **Portfolio distribution analysis** showing fund holdings and allocations
+- **Fund performance comparisons** with benchmark analysis
+
+### 📰 Real-time Market News
+- **Live market news** with automatic data extraction
+- **No manual PDF reading required** - intelligent content processing
+- **Market-moving announcements** with real-time updates
+- **Company-specific news** filtering and organization
+
+### 📊 Deep Research Portal
+- **Comprehensive stock fundamentals** research platform
+- **Financial statements analysis** across 10 years of data
+- **Payout and valuation metrics** with historical trends
+- **Income and balance sheets** with both visualization and detailed tables
+- **Multi-year comparative analysis** for informed decision making
+
 ### 📊 Professional Interface
 - **Interactive candlestick charts** with multiple timeframes
 - **Customizable watchlists** and monitoring dashboards
-- **Sector analysis** with performance metrics
 - **Advanced filtering** and search capabilities
 - **Dark/Light theme** with responsive design
 - **Progressive Web App** for seamless mobile experience
-
-### 🔍 Analysis Tools
-- **Top gainers and losers** monitoring
-- **Volume and value** analysis
-- **Sector performance** breakdown
-- **Market statistics** and breadth indicators
-- **Symbol lookup** with detailed data
-- **Real-time news and announcements** for market insights
-- **Deep financial analysis** with comprehensive fundamentals
 
 ### 🛠️ Developer APIs
 - **RESTful APIs** for market data access
@@ -98,26 +127,64 @@ curl "https://psxterminal.com/api/dividends/MARI"
 
 <div align="center">
 
-### Home
-<img src="screenshots/home.jpg" width="300" alt="Home">
+<div style="display: flex; overflow-x: auto; gap: 15px; padding: 20px; scroll-behavior: smooth;">
+  <div style="flex: none; width: 300px;">
+    <img src="screenshots/home.jpg" width="300" alt="Home" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <p style="text-align: center; margin-top: 8px; font-weight: bold;">Home</p>
+  </div>
+  
+  <div style="flex: none; width: 300px;">
+    <img src="screenshots/market.jpg" width="300" alt="Market" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <p style="text-align: center; margin-top: 8px; font-weight: bold;">Market</p>
+  </div>
+  
+  <div style="flex: none; width: 300px;">
+    <img src="screenshots/symbol.jpg" width="300" alt="Symbol" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <p style="text-align: center; margin-top: 8px; font-weight: bold;">Symbol</p>
+  </div>
+  
+  <div style="flex: none; width: 300px;">
+    <img src="screenshots/sectors.jpg" width="300" alt="Sectors" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <p style="text-align: center; margin-top: 8px; font-weight: bold;">Sectors</p>
+  </div>
+  
+  <div style="flex: none; width: 300px;">
+    <img src="screenshots/portfolio.jpg" width="300" alt="Portfolio" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <p style="text-align: center; margin-top: 8px; font-weight: bold;">Portfolio</p>
+  </div>
+  
+  <div style="flex: none; width: 300px;">
+    <img src="screenshots/distribution.jpg" width="300" alt="Distribution" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <p style="text-align: center; margin-top: 8px; font-weight: bold;">Distribution</p>
+  </div>
+  
+  <div style="flex: none; width: 300px;">
+    <img src="screenshots/research.jpg" width="300" alt="Research" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <p style="text-align: center; margin-top: 8px; font-weight: bold;">Research</p>
+  </div>
+  
+  <div style="flex: none; width: 300px;">
+    <img src="screenshots/news.jpg" width="300" alt="News" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <p style="text-align: center; margin-top: 8px; font-weight: bold;">News</p>
+  </div>
+  
+  <div style="flex: none; width: 300px;">
+    <img src="screenshots/towatch.jpg" width="300" alt="ToWatch" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <p style="text-align: center; margin-top: 8px; font-weight: bold;">ToWatch</p>
+  </div>
+  
+  <div style="flex: none; width: 300px;">
+    <img src="screenshots/funds.jpg" width="300" alt="Funds" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <p style="text-align: center; margin-top: 8px; font-weight: bold;">Funds</p>
+  </div>
+  
+  <div style="flex: none; width: 300px;">
+    <img src="screenshots/dividends.jpg" width="300" alt="Dividends" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <p style="text-align: center; margin-top: 8px; font-weight: bold;">Dividends</p>
+  </div>
+</div>
 
-### Market
-<img src="screenshots/market.jpg" width="300" alt="Market">
-
-### Charts
-<img src="screenshots/charts.jpg" width="300" alt="Charts">
-
-### Fundamentals
-<img src="screenshots/fundamentals.jpg" width="300" alt="Fundamentals">
-
-### PE Yields
-<img src="screenshots/PE-Yields.jpg" width="300" alt="PE Yields">
-
-### Dividends History
-<img src="screenshots/dividends_history.jpg" width="300" alt="Dividends History">
-
-### App
-<img src="screenshots/App.jpg" width="300" alt="App">
+*👆 Swipe left/right to explore all platform features*
 
 *[View all screenshots →](screenshots/)*
 
@@ -148,10 +215,14 @@ curl "https://psxterminal.com/api/dividends/MARI"
 Visit **[psxterminal.com](https://psxterminal.com)** for full market monitoring:
 - Real-time dashboard with live updates
 - Interactive charts with multiple timeframes
+- Advanced portfolio tracking with 5 years of data
 - Customizable watchlists and tools
 - Sector performance tracking
-- Real-time news and announcements
-- Deep financial analysis and fundamentals
+- Comprehensive mutual funds coverage
+- Real-time news with automatic data extraction
+- Deep research portal with 10 years of financial data
+- ToWatch opportunity scanner
+- Complete dividend calendar
 - Mobile-optimized responsive interface
 - Progressive Web App functionality
 
@@ -235,8 +306,6 @@ ws.onclose = () => {
 };
 ```
 
-
-
 *[Complete examples →](examples/)*
 
 ---
@@ -268,8 +337,6 @@ See [Contributing Guide](CONTRIBUTING.md) for:
 - Development setup
 - Code standards
 - Pull request process
-
-
 
 ---
 
@@ -307,14 +374,16 @@ See [Contributing Guide](CONTRIBUTING.md) for:
 - [x] Mobile-optimized design
 - [x] Dark/Light theme support
 - [x] Progressive Web App (PWA)
-- [x] Real-time news and announcements
-- [x] Deep financial analysis with fundamentals
-- [x] Historical dividend data
+- [x] Real-time news with automatic data extraction
+- [x] Deep research portal with 10 years of financial data
+- [x] Advanced portfolio tracking with 5 years of data
+- [x] ToWatch opportunity scanner
+- [x] Complete dividend calendar
+- [x] Comprehensive mutual funds coverage
 
 ### Upcoming 🚧
 - [ ] **Mobile Apps** (iOS/Android)
 - [ ] **Advanced Analytics** (Technical indicators)
-- [ ] **Portfolio Tools** (Tracking, analysis)
 - [ ] **Alert System** (Email/SMS notifications)
 - [ ] **Market Scanner** (Custom screening)
 - [ ] **Historical Data** (Extended analysis)
@@ -359,6 +428,6 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ---
 
-**PSX Terminal** - *Professional market data platform by developers, for developers*
+**PSX Terminal** - *Professional market data platform with advanced portfolio intelligence*
 
 </div>
